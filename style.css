@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    background: rgb(8, 0, 24);
+}
+
+.contenedor {
+    background: url(https://images.unsplash.com/photo-1532798369041-b33eb576ef16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80);
+    background-size: cover;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border-color: rgb(8, 0, 24);
+    max-height: 100vh;
+    height: 90vh;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #f2f2f2;
+    font-size: 43px;
+    text-shadow: 2px 2px 3px rgb(8, 0, 24);
+}
+
+h3 {
+    color: #f2f2f2;
+    font-size: 20px;
+    text-shadow: 2px 2px 3px rgb(8, 0, 24);
+}
+
+input {
+    padding: 10px;
+    margin: 2px;
+    border-radius: 6px;
+}
+
+input[type="text"] {
+    background: #fff;
+    margin: 0px 0px 10px 0px;
+}
+
+.btn {
+    background: rgb(8, 0, 24);
+    color: white;
+    font-weight: 700;
+    outline: none;
+    border-color: whitesmoke;
+}
+
+.btn:hover {
+    background: midnightblue;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 20px;
+}
+
+.resultado {
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: white;
+    text-shadow: 2px 2px 5px rgb(8, 0, 24);
+    border-color: rgb(8, 0, 24);
+}
+
+.carta {
+    margin: 10px 0 40px 0;
+    display: flex;
+    justify-content: center;
+}
