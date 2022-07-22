@@ -103,8 +103,7 @@ Estilos de Ernesto/RoVixen
 */
 
 #tracking{
-    background-color: rgba(0, 255, 255, 0.541);
-    min-height: 10rem;
+    height: 10rem;
     margin-block: 3rem;
 
 
