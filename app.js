@@ -22,6 +22,13 @@ const rotate = function(min, max){
     return operacion;
 }
 
+let trackingDeCartas = [];
+
+function pushTrackingCarta(carta){
+    trackingDeCartas.push(carta);
+
+    console.log(carta)
+}
 
 const output = document.getElementById('result');
 const btnMayor = document.getElementById('mayor');
@@ -32,6 +39,8 @@ const carta = document.getElementById('carta-img');
 const mostrarMayor = btnMayor.addEventListener("click", function arcanoMayor(){
     const operacion = arcanosMayores[random(0,21)];
     const girar = arcanosMayores[rotate(0,1)];
+
+    pushTrackingCarta(operacion);
     
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
@@ -40,6 +49,9 @@ const mostrarMayor = btnMayor.addEventListener("click", function arcanoMayor(){
 const mostrarMenor = btnMenor.addEventListener("click", function arcanoMenor(){
     const operacion = arcanosMenores[random(0,55)];
     const girar = arcanosMenores[rotate(0,1)];
+
+    pushTrackingCarta(operacion);
+
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
 });
@@ -47,6 +59,9 @@ const mostrarMenor = btnMenor.addEventListener("click", function arcanoMenor(){
 const mostrarDeck = btnAleatorio.addEventListener("click", function aleatorio(){
     const operacion = mazo[random(0,77)];
     const girar = mazo[rotate(0,1)];
+
+    pushTrackingCarta(operacion);
+
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
 });
