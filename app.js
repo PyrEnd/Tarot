@@ -23,11 +23,16 @@ const rotate = function(min, max){
 }
 
 let trackingDeCartas = [];
+const trackingDisplay=document.getElementById("tracking")
 
 function pushTrackingCarta(carta){
     trackingDeCartas.push(carta);
 
-    console.log(carta)
+    console.log(trackingDeCartas)
+
+    trackingDisplay.innerHTML = trackingDeCartas.map((cartaName)=>{
+        return `<div class="carta" style="--cartaimgurl:url('img/${cartaName}.jpg')"></div>`;
+    }).join("<br>");
 }
 
 const output = document.getElementById('result');

@@ -102,13 +102,24 @@ Estilos de Ernesto/RoVixen
 //////////////////////////////////////////////////////////////////////////////////////////////
 */
 
-.tracking{
-    background-color: aqua;
-    height: 10rem;
+#tracking{
+    background-color: rgba(0, 255, 255, 0.541);
+    min-height: 10rem;
     margin-block: 3rem;
 
-    overflow-x: auto;
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#tracking .carta{
+
+    height: 60%;
+    width: 5rem;
+
+    background-image: var(--cartaimgurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
