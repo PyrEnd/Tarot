@@ -123,11 +123,19 @@ Tacking
 
     height: 60%;
     width: 5rem;
+}
+
+#tracking .carta::before{
+    content:  "";
+
+    width: 100%;
+    height: 100%;
 
     background-image: var(--cartaimgurl);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
 }
 
 #tracking .carta b{
@@ -139,13 +147,6 @@ Tacking
     border-radius: 2rem;
 }
 
-#tracking .carta:hover::before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-
 #tracking .carta:hover::after{
     content: "";
     position: absolute;
@@ -155,13 +156,14 @@ Tacking
 
     border: 1rem solid black;
 
-    z-index: 100;
+    z-index: 200;
     background-color: black;
 
     background-image: var(--cartaimgurl);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
 }
 
 /*
@@ -217,11 +219,19 @@ ConteoBox
 #conteo #conteo_box .carta{
     position: relative;
     background-color: #fff;
+}
+
+#conteo #conteo_box .carta::before{
+    content: "";
+
+    width: 100%;
+    height: 100%;
 
     background-image: var(--cartaimgurl);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
 }
 
 #conteo #conteo_box .carta b{

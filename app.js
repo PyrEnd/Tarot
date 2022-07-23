@@ -17,6 +17,7 @@ const rotate = function(min, max){
         carta.style.transform = "rotate(180deg)";
         return true;
     }else{
+        carta.style.transform = "";
         return false;
     }
 }
@@ -28,13 +29,14 @@ const trackingDisplay=document.getElementById("tracking")
 const trackingConteoBox=document.getElementById("conteo_box")
 
 function trackingPushCarta(carta,rotated){
+    const referencialName=carta+(rotated?"$$rotated":"");
 
     //agrego la carta a la lista
-    trackingDeCartas.push(carta);
+    trackingDeCartas.push(referencialName);
 
     //agrego la carta al objeto de conteo
-    if(trackingConteo[carta]) trackingConteo[carta]++;
-    else trackingConteo[carta]=1;
+    if(trackingConteo[referencialName]) trackingConteo[referencialName]++;
+    else trackingConteo[referencialName]=1;
     
 
     //esto hacia que iterase toda la lista para mapearla cada vez que haces click
@@ -43,11 +45,19 @@ function trackingPushCarta(carta,rotated){
     }).join("<br>"); */
 
     //aqui nomas agrego mas texto al texto que ya tiene
-    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>#${trackingDeCartas.length}</b></div>`;
+    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg'); --rotated:${rotated?1:0};">
+        <b>#${trackingDeCartas.length}</b>
+    </div>`;
 
     //mapeo el objeto de conteo y genero un objeto nuevo con los datos
-    trackingConteoBox.innerHTML = Object.entries(trackingConteo).map(([carta, cantidad])=>{
-        return `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${cantidad}</b></div>`;
+    trackingConteoBox.innerHTML = Object.entries(trackingConteo).map(([cartaMap, cantidad])=>{
+
+        const cardName=cartaMap.split("$$")[0];
+        const rotatedMap=cartaMap.split("$$")[1]==="rotated";
+
+        return `<div class="carta" style="--cartaimgurl:url('img/${cardName}.jpg'); --rotated:${rotatedMap?1:0};">
+            <b>${cantidad}</b>
+        </div>`;
     }).join("");
 }
 
