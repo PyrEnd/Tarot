@@ -57,11 +57,11 @@ const btnMenor = document.getElementById('menor');
 const btnAleatorio = document.getElementById('deck');
 const carta = document.getElementById('carta-img');
 
-function setCarta(operacion){
-    trackingPushCarta(operacion,rotate(0,1));
+function setCarta(cartaNombre){
+    trackingPushCarta(cartaNombre,rotate(0,1));
     
-    output.textContent = operacion;
-    carta.src = `img/${operacion}.jpg`;
+    output.textContent = cartaNombre;
+    carta.src = `img/${cartaNombre}.jpg`;
 }
 
 const mostrarMayor = btnMayor.addEventListener("click", ()=>setCarta(arcanosMayores[random(0,21)]));
