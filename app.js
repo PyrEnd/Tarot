@@ -22,14 +22,21 @@ const rotate = function(min, max){
     return operacion;
 }
 
-let trackingDeCartas = [];
+var trackingDeCartas = [];
+var trackingConteo = {};
+
 const trackingDisplay=document.getElementById("tracking")
 const trackingConteoBox=document.getElementById("conteo_box")
 
 function trackingPushCarta(carta){
+
+    //agrego la carta a la lista
     trackingDeCartas.push(carta);
 
-    console.log(trackingDeCartas)
+    //agrego la carta al objeto de conteo
+    if(trackingConteo[carta]) trackingConteo[carta]++;
+    else trackingConteo[carta]=1;
+    
 
     //esto hacia que iterase toda la lista para mapearla cada vez que haces click
     /* trackingDisplay.innerHTML = trackingDeCartas.map((cartaName)=>{
@@ -39,25 +46,11 @@ function trackingPushCarta(carta){
     //aqui nomas agrego mas texto al texto que ya tiene
     trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>#${trackingDeCartas.length}</b></div>`;
 
-    trackingConteoBox.innerHTML = Object.entries(trackingContarCartas()).map(([carta, cantidad])=>{
+    //mapeo el objeto de conteo y genero un objeto nuevo con los datos
+    trackingConteoBox.innerHTML = Object.entries(trackingConteo).map(([carta, cantidad])=>{
         return `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${cantidad}</b></div>`;
     }).join("");
 }
-
-function trackingContarCartas(){
-    let counteoObj={};
-
-    trackingDeCartas.forEach((carta)=>{
-        if(counteoObj[carta]){
-            counteoObj[carta]++;
-            return 
-        }
-        
-        counteoObj[carta]=1;
-    })
-
-    return counteoObj;
-}	
 
 const output = document.getElementById('result');
 const btnMayor = document.getElementById('mayor');
