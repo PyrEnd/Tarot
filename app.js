@@ -30,9 +30,11 @@ function pushTrackingCarta(carta){
 
     console.log(trackingDeCartas)
 
-    trackingDisplay.innerHTML = trackingDeCartas.map((cartaName)=>{
+    /* trackingDisplay.innerHTML = trackingDeCartas.map((cartaName)=>{
         return `<div class="carta" style="--cartaimgurl:url('img/${cartaName}.jpg')"></div>`;
-    }).join("<br>");
+    }).join("<br>"); */
+
+    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"></div>`;
 }
 
 const output = document.getElementById('result');
