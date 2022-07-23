@@ -15,11 +15,10 @@ const rotate = function(min, max){
 
     if(operacion === 0){
         carta.style.transform = "rotate(180deg)";
+        return true;
     }else{
-        carta.style.transform = "";
+        return false;
     }
-
-    return operacion;
 }
 
 var trackingDeCartas = [];
@@ -28,7 +27,7 @@ var trackingConteo = {};
 const trackingDisplay=document.getElementById("tracking")
 const trackingConteoBox=document.getElementById("conteo_box")
 
-function trackingPushCarta(carta){
+function trackingPushCarta(carta,rotated){
 
     //agrego la carta a la lista
     trackingDeCartas.push(carta);
@@ -58,35 +57,18 @@ const btnMenor = document.getElementById('menor');
 const btnAleatorio = document.getElementById('deck');
 const carta = document.getElementById('carta-img');
 
-const mostrarMayor = btnMayor.addEventListener("click", function arcanoMayor(){
-    const operacion = arcanosMayores[random(0,21)];
-    const girar = arcanosMayores[rotate(0,1)];
-
-    trackingPushCarta(operacion);
+function setCarta(operacion){
+    trackingPushCarta(operacion,rotate(0,1));
     
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
-});
+}
 
-const mostrarMenor = btnMenor.addEventListener("click", function arcanoMenor(){
-    const operacion = arcanosMenores[random(0,55)];
-    const girar = arcanosMenores[rotate(0,1)];
+const mostrarMayor = btnMayor.addEventListener("click", ()=>setCarta(arcanosMayores[random(0,21)])));
 
-    trackingPushCarta(operacion);
+const mostrarMenor = btnMenor.addEventListener("click", ()=>setCarta(arcanosMenores[random(0,55)]));
 
-    output.textContent = operacion;
-    carta.src = `img/${operacion}.jpg`;
-});
-
-const mostrarDeck = btnAleatorio.addEventListener("click", function aleatorio(){
-    const operacion = mazo[random(0,77)];
-    const girar = mazo[rotate(0,1)];
-
-    trackingPushCarta(operacion);
-
-    output.textContent = operacion;
-    carta.src = `img/${operacion}.jpg`;
-});
+const mostrarDeck = btnAleatorio.addEventListener("click",()=>setCarta(mazo[random(0,77)]));
 
 //console.log(mazo[random(0,77)]); // Mazo completo.
 //console.log(arcanosMayores[random(0,21)]); // Arcanos Mayores.
