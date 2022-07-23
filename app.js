@@ -64,7 +64,7 @@ function setCarta(operacion){
     carta.src = `img/${operacion}.jpg`;
 }
 
-const mostrarMayor = btnMayor.addEventListener("click", ()=>setCarta(arcanosMayores[random(0,21)])));
+const mostrarMayor = btnMayor.addEventListener("click", ()=>setCarta(arcanosMayores[random(0,21)]));
 
 const mostrarMenor = btnMenor.addEventListener("click", ()=>setCarta(arcanosMenores[random(0,55)]));
 
