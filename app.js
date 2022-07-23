@@ -2,13 +2,13 @@ const arcanosMayores = ['El Loco', 'El Mago', 'La Sacerdotisa', 'La Emperatriz',
 const arcanosMenores = ['Diez De Copas', 'As De Copas', 'Dos De Copas', 'Tres De Copas', 'Cuatro De Copas', 'Cinco De Copas', 'Seis De Copas', 'Siete De Copas', 'Ocho De Copas', 'Nueve De Copas', 'Rey De Copas', 'Caballero De Copas', 'Sota De Copas', 'Reina De Copas', 'Diez De Oros', 'As De Oros', 'Dos De Oros', 'Tres De Oros', 'Cuatro De Oros', 'Cinco De Oros', 'Seis De Oros', 'Siete De Oros', 'Ocho De Oros', 'Nueve De Oros', 'Rey De Oros', 'Caballero De Oros', 'Sota De Oros', 'Reina De Oros', 'Diez De Espadas', 'As De Espadas', 'Dos De Espadas', 'Tres De Espadas', 'Cuatro De Espadas', 'Cinco De Espadas', 'Seis De Espadas', 'Siete De Espadas', 'Ocho De Espadas', 'Nueve De Espadas', 'Rey De Espadas', 'Caballero De Espadas', 'Sota De Espadas', 'Reina De Espadas', 'Diez De Bastos', 'As De Bastos', 'Dos De Copas', 'Tres De Copas', 'Cuatro De Bastos', 'Cinco De Bastos', 'Seis De Bastos', 'Siete De Bastos', 'Ocho De Bastos', 'Nueve De Bastos', 'Rey De Bastos', 'Caballero De Bastos', 'Sota De Bastos', 'Reina De Bastos'];
 const mazo = [...arcanosMayores, ...arcanosMenores];
 
-const random = function(min, max){
+/* const random = function(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); 
-};
+}; */
 
-const rotate = function(min, max){
+/* const rotate = function(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
     operacion = Math.floor(Math.random() * (max - min + 1) + min);
@@ -20,7 +20,7 @@ const rotate = function(min, max){
         carta.style.transform = "";
         return false;
     }
-}
+} */
 
 var trackingDeCartas = [];
 var trackingConteo = {};
@@ -67,18 +67,28 @@ const btnMenor = document.getElementById('menor');
 const btnAleatorio = document.getElementById('deck');
 const carta = document.getElementById('carta-img');
 
-function setCarta(cartaNombre){
-    trackingPushCarta(cartaNombre,rotate(0,1));
+function setCartaFrom(mazoAUsar){
+
+    //seleccionando carta random
+    //recuerda que cartaIndex nunca llegara a valer mazo.length (un index invalido) por que Math.random() nunca retornara 1
+    const cartaIndex = Math.floor(Math.random() * mazoAUsar.length); 
+    const cartaNombre = mazoAUsar[cartaIndex];
+
+    //juzgando si estara rotada
+    const rotated=Math.random()>0.5;
+    carta.style.transform = rotated?"rotate(180deg)":"rotate(0deg)";
+
+    trackingPushCarta(cartaNombre,rotated);
     
     output.textContent = cartaNombre;
     carta.src = `img/${cartaNombre}.jpg`;
 }
 
-const mostrarMayor = btnMayor.addEventListener("click", ()=>setCarta(arcanosMayores[random(0,21)]));
+btnMayor.addEventListener("click", ()=>setCartaFrom(arcanosMayores));
 
-const mostrarMenor = btnMenor.addEventListener("click", ()=>setCarta(arcanosMenores[random(0,55)]));
+btnMenor.addEventListener("click", ()=>setCartaFrom(arcanosMenores));
 
-const mostrarDeck = btnAleatorio.addEventListener("click",()=>setCarta(mazo[random(0,77)]));
+btnAleatorio.addEventListener("click",()=>setCartaFrom(mazo));
 
 //console.log(mazo[random(0,77)]); // Mazo completo.
 //console.log(arcanosMayores[random(0,21)]); // Arcanos Mayores.
