@@ -93,3 +93,160 @@ h2 {
     display: flex;
     justify-content: center;
 }
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+Estilos de Ernesto/RoVixen
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+Tacking
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+#tracking{
+    height: 10rem;
+    margin-block: 3rem;
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#tracking .carta{
+    position: relative;
+
+    height: 60%;
+    width: 5rem;
+}
+
+#tracking .carta::before{
+    content:  "";
+
+    width: 100%;
+    height: 100%;
+
+    background-image: var(--cartaimgurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
+}
+
+#tracking .carta:hover::after{
+    content: "";
+    position: absolute;
+    top: -400%;
+    width: 400%;
+    height: 400%;
+
+    border: 1rem solid black;
+
+    z-index: 200;
+    background-color: black;
+
+    background-image: var(--cartaimgurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
+}
+
+#tracking .carta b{
+    position: absolute;
+    bottom: 0.3rem;
+    background-color: #f2f2f2;
+    height: 4ch;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+Conteo
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+#conteo{
+    margin-block: 3rem;
+    
+    display: grid;
+    grid-template-rows: 2rem;
+}
+
+#conteo label{
+    display: flex;
+}
+
+#conteo label .opened_icon{
+    font-family: monospace;
+    margin-inline: 1rem;
+    font-size: 1.8rem;
+    position: relative;
+    top: -0.2rem;
+}
+
+#conteo input{
+    display: none;
+}
+
+#conteo input:not(:checked) ~ label .opened_icon{
+    rotate: 180deg;
+}
+
+#conteo input:checked ~ #conteo_box{
+    display: none;
+}
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+ConteoBox
+*/
+
+#conteo #conteo_box{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 15rem;
+    grid-gap: 1rem;
+    margin-block: 1rem;
+}
+
+#conteo #conteo_box .carta{
+    position: relative;
+    background-color: #fff;
+}
+
+#conteo #conteo_box .carta::before{
+    content: "";
+
+    width: 100%;
+    height: 100%;
+
+    background-image: var(--cartaimgurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(calc(180deg * var(--rotated)));
+}
+
+#conteo #conteo_box .carta b{
+    background-color: rgba(255, 255, 255, 0.795);
+
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+
+    border-radius: 5rem;
+
+    position: absolute;
+    
+    height: max-content;
+
+    font-size: 2rem;
+
+    bottom: 0.6rem;
+}
