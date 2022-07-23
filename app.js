@@ -24,8 +24,9 @@ const rotate = function(min, max){
 
 let trackingDeCartas = [];
 const trackingDisplay=document.getElementById("tracking")
+const trackingConteoBox=document.getElementById("conteo_box")
 
-function pushTrackingCarta(carta){
+function trackingPushCarta(carta){
     trackingDeCartas.push(carta);
 
     console.log(trackingDeCartas)
@@ -36,8 +37,27 @@ function pushTrackingCarta(carta){
     }).join("<br>"); */
 
     //aqui nomas agrego mas texto al texto que ya tiene
-    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${trackingDeCartas.length}</b></div>`;
+    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>#${trackingDeCartas.length}</b></div>`;
+
+    trackingConteoBox.innerHTML = Object.entries(trackingContarCartas()).map(([carta, cantidad])=>{
+        return `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${cantidad}</b></div>`;
+    });
 }
+
+function trackingContarCartas(){
+    let counteoObj={};
+
+    trackingDeCartas.forEach((carta)=>{
+        if(counteoObj[carta]){
+            counteoObj[carta]++;
+            return 
+        }
+        
+        counteoObj[carta]=1;
+    })
+
+    return counteoObj;
+}	
 
 const output = document.getElementById('result');
 const btnMayor = document.getElementById('mayor');
@@ -49,7 +69,7 @@ const mostrarMayor = btnMayor.addEventListener("click", function arcanoMayor(){
     const operacion = arcanosMayores[random(0,21)];
     const girar = arcanosMayores[rotate(0,1)];
 
-    pushTrackingCarta(operacion);
+    trackingPushCarta(operacion);
     
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
@@ -59,7 +79,7 @@ const mostrarMenor = btnMenor.addEventListener("click", function arcanoMenor(){
     const operacion = arcanosMenores[random(0,55)];
     const girar = arcanosMenores[rotate(0,1)];
 
-    pushTrackingCarta(operacion);
+    trackingPushCarta(operacion);
 
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;
@@ -69,7 +89,7 @@ const mostrarDeck = btnAleatorio.addEventListener("click", function aleatorio(){
     const operacion = mazo[random(0,77)];
     const girar = mazo[rotate(0,1)];
 
-    pushTrackingCarta(operacion);
+    trackingPushCarta(operacion);
 
     output.textContent = operacion;
     carta.src = `img/${operacion}.jpg`;

@@ -171,8 +171,10 @@ Conteo
 */
 
 #conteo{
-    display: flex;
     margin-block: 3rem;
+    
+    display: grid;
+    grid-template-rows: 2rem;
 }
 
 #conteo label{
@@ -191,6 +193,10 @@ Conteo
     display: none;
 }
 
-#conteo input:checked ~ label .opened_icon{
+#conteo input:not(:checked) ~ label .opened_icon{
     rotate: 180deg;
+}
+
+#conteo input:checked ~ #conteo_box{
+    display: none;
 }
