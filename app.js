@@ -41,7 +41,7 @@ function trackingPushCarta(carta){
 
     trackingConteoBox.innerHTML = Object.entries(trackingContarCartas()).map(([carta, cantidad])=>{
         return `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${cantidad}</b></div>`;
-    });
+    }).join("");
 }
 
 function trackingContarCartas(){

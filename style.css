@@ -200,3 +200,43 @@ Conteo
 #conteo input:checked ~ #conteo_box{
     display: none;
 }
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+ConteoBox
+*/
+
+#conteo #conteo_box{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 15rem;
+    grid-gap: 1rem;
+    margin-block: 1rem;
+}
+
+#conteo #conteo_box .carta{
+    position: relative;
+    background-color: #fff;
+
+    background-image: var(--cartaimgurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#conteo #conteo_box .carta b{
+    background-color: rgba(255, 255, 255, 0.795);
+
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+
+    border-radius: 5rem;
+
+    position: absolute;
+    
+    height: max-content;
+
+    font-size: 2rem;
+
+    bottom: 0.6rem;
+}
