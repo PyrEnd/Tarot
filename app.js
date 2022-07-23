@@ -30,11 +30,13 @@ function pushTrackingCarta(carta){
 
     console.log(trackingDeCartas)
 
+    //esto hacia que iterase toda la lista para mapearla cada vez que haces click
     /* trackingDisplay.innerHTML = trackingDeCartas.map((cartaName)=>{
         return `<div class="carta" style="--cartaimgurl:url('img/${cartaName}.jpg')"></div>`;
     }).join("<br>"); */
 
-    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"></div>`;
+    //aqui nomas agrego mas texto al texto que ya tiene
+    trackingDisplay.innerHTML += `<div class="carta" style="--cartaimgurl:url('img/${carta}.jpg')"><b>${trackingDeCartas.length}</b></div>`;
 }
 
 const output = document.getElementById('result');

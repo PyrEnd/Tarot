@@ -124,6 +124,15 @@ Estilos de Ernesto/RoVixen
     background-position: center;
 }
 
+#tracking .carta b{
+    position: absolute;
+    bottom: 0.3rem;
+    background-color: #f2f2f2;
+    height: 4ch;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
 #tracking .carta:hover::before{
     content: "";
     width: 100%;
